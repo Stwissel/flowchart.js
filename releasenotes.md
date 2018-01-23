@@ -1,6 +1,68 @@
+### v1.8.0
+
+- Allow Conditional to support 'true' or 'false' along with 'yes' and 'no' [#128](https://github.com/adrai/flowchart.js/pull/#128) thanks to [bhedge](https://github.com/bhedge)
+
+### v1.7.0
+
+- add parameter to disable vertical alignment of condition symbol [#115](https://github.com/adrai/flowchart.js/pull/#115) thanks to [bertrandmartel](https://github.com/bertrandmartel)
+- add line style flow support [#113](https://github.com/adrai/flowchart.js/pull/#115) thanks to [bertrandmartel](https://github.com/bertrandmartel)
+
+### v1.6.6
+
+- Fix disruptive space char when parsing [#105](https://github.com/adrai/flowchart.js/pull/#105)
+
+### v1.6.5
+
+- set proper engine version in package.json
+
+### v1.6.4
+
+- raphael now is an npm dependency (not the git reference anymore)
+
+### v1.6.3
+
+- Allow going to same symbol thanks to [nonylene](https://github.com/nonylene) [#83](https://github.com/adrai/flowchart.js/pull/#83)
+
+### v1.6.2
+
+- Fixed not calculate viewBox and size properly thanks to [jackycute](https://github.com/jackycute) [#74](https://github.com/adrai/flowchart.js/issues/#74)
+
+### v1.6.1
+
+- Fixed lines are not included in the calculation of viewBox and size thanks to [jackycute](https://github.com/jackycute) [#72](https://github.com/adrai/flowchart.js/issues/#72) [#67](https://github.com/adrai/flowchart.js/issues/#67)
+
+### v1.6.0
+
+- changed build to use only webpack thanks to [sergeyt](https://github.com/sergeyt) [#70](https://github.com/adrai/flowchart.js/issues/70)
+
+### v1.4.2
+
+- optimized handling of special characters thanks to the advice of [Badhumvee](https://github.com/Badhumvee)
+
+### v1.4.0
+
+- Support scale option [#52](https://github.com/adrai/flowchart.js/pull/52) thanks to [hikarock](https://github.com/hikarock)
+
+### v1.3.4
+
+- make text better readable [#31](https://github.com/adrai/flowchart.js/issues/31)
+- sorry
+
+### v1.3.3
+
+- make text better readable [#31](https://github.com/adrai/flowchart.js/issues/31)
+
+### v1.3.2
+
+- optimized a bit for left support [#26](https://github.com/adrai/flowchart.js/issues/26)
+
+### v1.3.1
+
+- added support for css class [#24](https://github.com/adrai/flowchart.js/pull/24)
+
 ### v1.3.0
 
-- Added support for color coding (flowstate) [#23](https://github.com/adrai/flowchart.js/pull/23) thanks to [Stwissel](https://github.com/Stwissel)
+- added support for color coding (flowstate) [#23](https://github.com/adrai/flowchart.js/pull/23) thanks to [Stwissel](https://github.com/Stwissel)
 
 ### v1.2.12
 

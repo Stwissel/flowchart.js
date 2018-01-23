@@ -1,19 +1,25 @@
+var Symbol = require('./flowchart.symbol');
+var inherits = require('./flowchart.helpers').inherits;
+var drawAPI = require('./flowchart.functions');
+var drawPath = drawAPI.drawPath;
+
 function Condition(chart, options) {
   options = options || {};
   Symbol.call(this, chart, options);
   this.textMargin = this.getAttr('text-margin');
   this.yes_direction = 'bottom';
   this.no_direction = 'right';
-  if (options.yes && options['direction_yes'] && options.no && !options['direction_no']) {
-    if (options['direction_yes'] === 'right') {
+  this.params = options.params;
+  if (options.yes && options.direction_yes && options.no && !options.direction_no) {
+    if (options.direction_yes === 'right') {
       this.no_direction = 'bottom';
       this.yes_direction = 'right';
     } else {
       this.no_direction = 'right';
       this.yes_direction = 'bottom';
     }
-  } else if (options.yes && !options['direction_yes'] && options.no && options['direction_no']) {
-    if (options['direction_no'] === 'right') {
+  } else if (options.yes && !options.direction_yes && options.no && options.direction_no) {
+    if (options.direction_no === 'right') {
       this.yes_direction = 'bottom';
       this.no_direction = 'right';
     } else {
@@ -63,6 +69,7 @@ function Condition(chart, options) {
   if (options.link) { symbol.attr('href', options.link); }
   if (options.target) { symbol.attr('target', options.target); }
   if (options.key) { symbol.node.id = options.key; }
+  symbol.node.setAttribute('class', this.getAttr('class'));
 
   this.text.attr({
     y: symbol.getBBox().height/2
@@ -73,7 +80,7 @@ function Condition(chart, options) {
 
   this.initialize();
 }
-f.inherits(Condition, Symbol);
+inherits(Condition, Symbol);
 
 Condition.prototype.render = function() {
 
@@ -89,7 +96,6 @@ Condition.prototype.render = function() {
 
   if (this.bottom_symbol) {
     var bottomPoint = this.getBottom();
-    var topPoint = this.bottom_symbol.getTop();
 
     if (!this.bottom_symbol.isPositioned) {
       this.bottom_symbol.shiftY(this.getY() + this.height + lineLength);
@@ -102,7 +108,6 @@ Condition.prototype.render = function() {
 
   if (this.right_symbol) {
     var rightPoint = this.getRight();
-    var leftPoint = this.right_symbol.getLeft();
 
     if (!this.right_symbol.isPositioned) {
 
@@ -116,10 +121,12 @@ Condition.prototype.render = function() {
         for (var i = 0, len = self.chart.symbols.length; i < len; i++) {
           symb = self.chart.symbols[i];
 
-          var diff = Math.abs(symb.getCenter().x - self.right_symbol.getCenter().x);
-          if (symb.getCenter().y > self.right_symbol.getCenter().y && diff <= self.right_symbol.width/2) {
-            hasSymbolUnder = true;
-            break;
+          if (!self.params['align-next'] || self.params['align-next'] !== 'no') { 
+            var diff = Math.abs(symb.getCenter().x - self.right_symbol.getCenter().x);
+            if (symb.getCenter().y > self.right_symbol.getCenter().y && diff <= self.right_symbol.width/2) {
+              hasSymbolUnder = true;
+              break;
+            }
           }
         }
 
@@ -145,3 +152,5 @@ Condition.prototype.renderLines = function() {
     this.drawLineTo(this.no_symbol, this.getAttr('no-text'), this.no_direction);
   }
 };
+
+module.exports = Condition;

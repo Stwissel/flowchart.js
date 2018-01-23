@@ -1,5 +1,5 @@
 // defaults
-var o = {
+module.exports = {
   'x': 0,
   'y': 0,
   'line-width': 3,
@@ -16,6 +16,8 @@ var o = {
   'yes-text': 'yes',
   'no-text': 'no',
   'arrow-end': 'block',
+  'class': 'flowchart',
+  'scale': 1,
   'symbols': {
     'start': {},
     'end': {},

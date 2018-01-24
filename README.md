@@ -80,14 +80,19 @@ and then
                                 },
                                 // even flowstate support ;-)
                                 'flowstate' : {
-                                    // 'past' : { 'fill' : '#CCCCCC', 'font-size' : 12},
-                                    // 'current' : {'fill' : 'yellow', 'font-color' : 'red', 'font-weight' : 'bold'},
-                                    // 'future' : { 'fill' : '#FFFF99'},
+                                    'past' : { 'fill' : '#CCCCCC', 'font-size' : 12},
+                                    'current' : {'fill' : 'yellow', 'font-color' : 'red', 'font-weight' : 'bold'},
+                                    'future' : { 'fill' : '#FFFF99'},
                                     'request' : { 'fill' : 'blue'}//,
-                                    // 'invalid': {'fill' : '#444444'},
-                                    // 'approved' : { 'fill' : '#58C4A3', 'font-size' : 12, 'yes-text' : 'APPROVED', 'no-text' : 'n/a' },
-                                    // 'rejected' : { 'fill' : '#C45879', 'font-size' : 12, 'yes-text' : 'n/a', 'no-text' : 'REJECTED' }
-                                  }
+                                    'invalid': {'fill' : '#444444'},
+                                    'approved' : { 'fill' : '#58C4A3', 'font-size' : 12, 'yes-text' : 'APPROVED', 'no-text' : 'n/a' },
+                                    'rejected' : { 'fill' : '#C45879', 'font-size' : 12, 'yes-text' : 'n/a', 'no-text' : 'REJECTED' }
+                                  },
+                                'lineStyle' : {
+                                    'completed' : {'stroke':'Red','stroke-width':6,'arrow-end':'classic-wide-long'},
+                                    'invalid' : {'stroke' : 'Gray'}
+                                    'future' : {'stroke' : 'Green'}
+                                }  
                               });
 </script>
 ```
@@ -95,10 +100,20 @@ and then
 ## Advice
 Symbols that should possibly not be used in the text: '=>' and '->' and ':>' and '|' and '@>'
 
-If you want to emphasize a specific path in your flowchart, you can additionally define it like this:
+## Emphasize the path
+
+If you want to emphasize a specific path in your flowchart, with colors, size or arrow heads, you can additionally define it like this:
 
 ```
 st@>op1({"stroke":"Red"})@>cond({"stroke":"Red","stroke-width":6,"arrow-end":"classic-wide-long"})@>c2({"stroke":"Red"})@>op2({"stroke":"Red"})@>e({"stroke":"Red"})
+```
+
+**New in 1.8.1**
+
+You now can use named properties to define the arrow layout. Definition is similar to the `flowstate` in the `lineStyle` object (see definition above):
+
+```
+st@>op1(completed)@>cond({completed)@>c2(invalid)@>op2(future)@>e(future)
 ```
 
 ## Contributors
